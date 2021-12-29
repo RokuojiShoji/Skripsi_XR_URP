@@ -2,18 +2,19 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-[RequireComponent(typeof(PhysicsPoser))]
-[RequireComponent(typeof(XRDirectInteractor))]
+[RequireComponent(typeof(HandPhysics))]
 public class ControllerHider : MonoBehaviour
 {
-    public GameObject controllerObject = null;
 
-    private PhysicsPoser physicsPoser = null;
+    //[SerializeField] private XR
+    [SerializeField] private GameObject controllerObject = null;
+
+    private HandPhysics handPhysics = null;
     private XRDirectInteractor interactor = null;
 
     private void Awake()
     {
-        physicsPoser = GetComponent<PhysicsPoser>();
+        handPhysics = GetComponent<HandPhysics>();
         interactor = GetComponent<XRDirectInteractor>();
     }
 
@@ -41,7 +42,7 @@ public class ControllerHider : MonoBehaviour
 
     private IEnumerator WaitForRange()
     {
-        yield return new WaitWhile(physicsPoser.WithinPhysicsRange);
+        yield return new WaitWhile(handPhysics.InRange);
         controllerObject.SetActive(true);
     }
 }

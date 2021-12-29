@@ -26,7 +26,7 @@ public class PhysicsPoser : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         controller = GetComponent<XRController>();
         interactor = GetComponent<XRBaseInteractor>();
-        }
+    }
 
     private void Start()
     {
@@ -71,6 +71,7 @@ public class PhysicsPoser : MonoBehaviour
         return Physics.CheckSphere(transform.position, physicsRange, physicsMask, QueryTriggerInteraction.Ignore);
     }
 
+    
     private void MoveUsingPhysics()
     {
         rigidBody.velocity *= slowDownVelocity;
