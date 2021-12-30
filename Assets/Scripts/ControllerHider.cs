@@ -6,8 +6,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class ControllerHider : MonoBehaviour
 {
 
-    //[SerializeField] private XR
-    [SerializeField] private GameObject controllerObject = null;
+    [SerializeField] private XRDirectInteractor directInteractor;
+    [SerializeField] private MeshRenderer mesh = null;
+    [SerializeField] private SphereCollider collider = null;
 
     private HandPhysics handPhysics = null;
     private XRDirectInteractor interactor = null;
@@ -15,7 +16,7 @@ public class ControllerHider : MonoBehaviour
     private void Awake()
     {
         handPhysics = GetComponent<HandPhysics>();
-        interactor = GetComponent<XRDirectInteractor>();
+        interactor = directInteractor.GetComponent<XRDirectInteractor>();
     }
 
     private void OnEnable()
@@ -32,7 +33,8 @@ public class ControllerHider : MonoBehaviour
 
     private void Hide(XRBaseInteractable interactable)
     {
-        controllerObject.SetActive(false);
+        mesh.enabled = false;
+        collider.enabled = false;
     }
 
     private void Show(XRBaseInteractable interactable)
@@ -43,6 +45,7 @@ public class ControllerHider : MonoBehaviour
     private IEnumerator WaitForRange()
     {
         yield return new WaitWhile(handPhysics.InRange);
-        controllerObject.SetActive(true);
+        mesh.enabled = true;
+        collider.enabled = true;
     }
 }

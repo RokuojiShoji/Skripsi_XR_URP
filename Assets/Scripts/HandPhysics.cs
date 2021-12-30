@@ -26,19 +26,22 @@ public class HandPhysics : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        if (!InRange())
+        if (!InRange()){
+            Debug.Log("immediate");
             ImmediateMove();
-        else
+        }
+        else {
+            Debug.Log("physic");
             PhysicsMove();
+        }
     }
 
-    private void OnDrawGizmoz()
-    {
-        Gizmos.DrawWireSphere(transform.position, range);
-    }
+    //private void OnDrawGizmoz()
+    //{
+    //    Gizmos.DrawWireSphere(transform.position, range);
+    //}
 
     public bool InRange()
     {
