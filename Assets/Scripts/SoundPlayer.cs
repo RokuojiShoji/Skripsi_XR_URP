@@ -9,5 +9,6 @@ public class SoundPlayer : MonoBehaviour
     void OnCollisionEnter(Collision collision) {
         sfx.volume = collision.relativeVelocity.magnitude;
         sfx.Play();
+        Debug.Log("audio played");
     }
 }
