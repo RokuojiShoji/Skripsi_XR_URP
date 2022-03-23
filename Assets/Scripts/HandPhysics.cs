@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HandPhysics : MonoBehaviour
 {
@@ -30,7 +28,7 @@ public class HandPhysics : MonoBehaviour
     {
         if (!InRange()){
             Debug.Log("immediate");
-            ImmediateMove();
+            InstantaneousMove();
         }
         else {
             Debug.Log("physic");
@@ -38,26 +36,12 @@ public class HandPhysics : MonoBehaviour
         }
     }
 
-    //private void OnDrawGizmoz()
-    //{
-    //    Gizmos.DrawWireSphere(transform.position, range);
-    //}
 
     public bool InRange()
     {
         return Physics.CheckSphere(transform.position, range, physicsMask, QueryTriggerInteraction.Ignore);
     }
-    // private void OnCollisionEnter (Collision other)
-    // {
-    //     movementID = "physic";
-    //     Debug.Log("change to physic");
-    // }
-
-    // private void OnCollisionExit (Collision other)
-    // {
-    //     movementID = "immediate";
-    //     Debug.Log("change to immediate");
-    // }
+    
 
     private void PhysicsMove()
     {
@@ -72,7 +56,7 @@ public class HandPhysics : MonoBehaviour
 
     }
 
-    private void ImmediateMove()
+    private void InstantaneousMove()
     {
         // position
         _body.velocity = Vector3.zero;

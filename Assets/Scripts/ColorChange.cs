@@ -5,9 +5,9 @@ using UnityEngine;
 public class ColorChange : MonoBehaviour
 {
     
-    public Material material1;
-    public Material material2;
-    public float transitionTime = 1f;
+    [SerializeField] private Material material1;
+    [SerializeField] private Material material2;
+    [SerializeField] private float transitionTime = 1f;
 
 
     void OnCollisionEnter (Collision collision) {

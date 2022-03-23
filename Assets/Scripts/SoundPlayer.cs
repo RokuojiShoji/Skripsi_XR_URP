@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SoundPlayer : MonoBehaviour
 {
-    public AudioSource sfx;
+    [SerializeField] private AudioSource sfx;
     
     void OnCollisionEnter(Collision collision) {
         sfx.volume = collision.relativeVelocity.magnitude;

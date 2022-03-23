@@ -37,6 +37,5 @@ public class DoorOpen : MonoBehaviour
     {
         leftDoor.rotation = Quaternion.Lerp(leftDoor.rotation, leftTargetRotation, smooth * Time.deltaTime);  
         rightDoor.rotation = Quaternion.Lerp(rightDoor.rotation, rightTargetRotation, smooth * Time.deltaTime);
-           
     }
 }
